@@ -1,0 +1,108 @@
+{
+	"$schema": "https://schema.kunkun.sh",
+	"name": "kunkun-ext-sqlite-browser",
+	"repository": "https://github.com/kunkunsh/kunkun-ext-sqlite-browser",
+	"version": "0.0.4",
+	"kunkun": {
+		"name": "SQLite Browser",
+		"shortDescription": "SQLite Browser",
+		"longDescription": "SQLite Browser",
+		"identifier": "sqlite-browser",
+		"icon": {
+			"type": "iconify",
+			"value": "devicon:sqlite"
+		},
+		"demoImages": [],
+		"permissions": [
+			"event:drag-drop",
+			{
+				"permission": "shell:deno:spawn",
+				"allow": [
+					{
+						"path": "$EXTENSION/deno-src/index.ts",
+						"env": [
+							"DENO_SQLITE_PATH",
+							"DENO_SQLITE_LOCAL",
+							"DENO_DIR",
+							"HOME"
+						],
+						"read": "*",
+						"ffi": "*"
+					}
+				]
+			},
+			"shell:kill",
+			"dialog:all",
+			{
+				"permission": "fs:exists",
+				"allow": [
+					{
+						"path": "**"
+					}
+				]
+			},
+			"shell:stdin-write",
+			"notification:all"
+		],
+		"customUiCmds": [
+			{
+				"main": "/",
+				"dist": "build",
+				"devMain": "http://localhost:5173",
+				"name": "SQLite Browser",
+				"cmds": []
+			}
+		],
+		"templateUiCmds": []
+	},
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@kksh/api": "^0.0.52",
+		"@kksh/svelte5": "0.1.10",
+		"@tanstack/table-core": "^8.20.5",
+		"clsx": "^2.1.1",
+		"mode-watcher": "^0.5.0",
+		"tailwind-merge": "^2.5.4",
+		"tailwind-variants": "^0.3.0",
+		"valibot": "1.0.0-beta.8"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/adapter-static": "^3.0.6",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "4.0.0",
+		"@tailwindcss/typography": "^0.5.15",
+		"@types/eslint": "^9.6.1",
+		"autoprefixer": "^10.4.20",
+		"bits-ui": "1.0.0-next.64",
+		"eslint": "^9.15.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.46.0",
+		"globals": "^15.12.0",
+		"lucide-svelte": "^0.460.1",
+		"postcss": "^8.4.49",
+		"prettier": "^3.3.3",
+		"prettier-plugin-svelte": "^3.2.8",
+		"prettier-plugin-tailwindcss": "^0.6.9",
+		"svelte": "^5.2.8",
+		"svelte-check": "^4.0.9",
+		"tailwindcss": "^3.4.15",
+		"typescript": "^5.6.3",
+		"typescript-eslint": "^8.15.0",
+		"vite": "^5.4.11"
+	},
+	"type": "module",
+	"files": [
+		"build",
+		".gitignore"
+	],
+	"packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a"
+}
