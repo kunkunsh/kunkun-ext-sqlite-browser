@@ -1,8 +1,9 @@
 {
 	"$schema": "https://schema.kunkun.sh",
 	"name": "kunkun-ext-sqlite-browser",
+	"license": "MIT",
 	"repository": "https://github.com/kunkunsh/kunkun-ext-sqlite-browser",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"kunkun": {
 		"name": "SQLite Browser",
 		"shortDescription": "SQLite Browser",
