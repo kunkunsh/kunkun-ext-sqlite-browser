@@ -3,7 +3,7 @@
 	"name": "kunkun-ext-sqlite-browser",
 	"license": "MIT",
 	"repository": "https://github.com/kunkunsh/kunkun-ext-sqlite-browser",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"kunkun": {
 		"name": "SQLite Browser",
 		"shortDescription": "SQLite Browser",
@@ -66,7 +66,7 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
-		"@kksh/api": "^0.0.52",
+		"@kksh/api": "^0.1.1",
 		"@kksh/svelte5": "0.1.10",
 		"@tanstack/table-core": "^8.20.5",
 		"clsx": "^2.1.1",

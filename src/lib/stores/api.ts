@@ -1,6 +1,6 @@
 import { get, writable } from 'svelte/store';
 import type { SQLiteBrowser } from '../../../deno-src/dao';
-import { type Child, type RPCChannel, type DenoCommand, shell } from '@kksh/api/ui/iframe';
+import { type Child, type RPCChannel, type DenoCommand, shell } from '@kksh/api/ui/custom';
 
 type PromisifiedSQLiteBrowser = {
 	[K in keyof SQLiteBrowser]: SQLiteBrowser[K] extends (...args: infer A) => infer R

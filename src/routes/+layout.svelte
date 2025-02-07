@@ -22,12 +22,12 @@
 		RPCChannel,
 		Child,
 		event
-	} from '@kksh/api/ui/iframe';
+	} from '@kksh/api/ui/custom';
 	import { X } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import { type SQLiteBrowser } from '../../deno-src/dao';
 	import AppSidebar from '@/components/app-sidebar.svelte';
-	import type { DenoCommand } from '@kksh/api/ui/worker';
+	import type { DenoCommand } from '@kksh/api/ui/template';
 	import type { ColumnInfo } from '../types';
 	import { apiStore } from '@/stores/api';
 	import { goto } from '$app/navigation';
