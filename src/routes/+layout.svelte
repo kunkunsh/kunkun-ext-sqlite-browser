@@ -62,22 +62,31 @@
 		(async () => {
 			console.log('dbPath changed', $dbPath);
 			if (!$dbPath || !$apiStore.rpcChannel) {
+				console.warn('dbPath or rpcChannel is not set');
 				return;
 			}
 			const api = $apiStore.rpcChannel.getAPI();
 			await api.init($dbPath);
-			api.getTables().then((tables) => {
-				dbStore.setTables(tables);
-				let columnInfo: Record<string, ColumnInfo[]> = {};
-				// get column info for each table and merge to columnInfo
-				tables.forEach((table) => {
-					api.getTableColumns(table.name).then((columns) => {
-						columnInfo[table.name] = columns;
+			api
+				.getTables()
+				.then((tables) => {
+					console.log('tables', tables);
+					dbStore.setTables(tables);
+					let columnInfo: Record<string, ColumnInfo[]> = {};
+					// get column info for each table and merge to columnInfo
+					tables.forEach((table) => {
+						api.getTableColumns(table.name).then((columns) => {
+							columnInfo[table.name] = columns;
+						});
+					});
+					dbStore.setColumnInfo(columnInfo);
+				})
+				.catch((err) => {
+					console.error(err);
+					toast.error('Failed to get tables', {
+						description: err.message
 					});
 				});
-				dbStore.setColumnInfo(columnInfo);
-				// console.log(tables);
-			});
 		})();
 	});
 </script>

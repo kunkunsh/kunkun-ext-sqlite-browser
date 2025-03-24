@@ -9,7 +9,7 @@ type PromisifiedSQLiteBrowser = {
 };
 
 interface State {
-	rpcChannel?: RPCChannel<{}, PromisifiedSQLiteBrowser>;
+	rpcChannel?: RPCChannel<object, PromisifiedSQLiteBrowser>;
 	process?: Child;
 	command?: DenoCommand<string>;
 }
@@ -17,7 +17,7 @@ export function createApiStore() {
 	const apiStore = writable<State>({});
 	async function init() {
 		const { rpcChannel, process, command } = await shell.createDenoRpcChannel<
-			{},
+			object,
 			PromisifiedSQLiteBrowser
 		>(
 			'$EXTENSION/deno-src/index.ts',
@@ -25,10 +25,14 @@ export function createApiStore() {
 			{
 				allowEnv: ['DENO_SQLITE_PATH', 'DENO_SQLITE_LOCAL', 'DENO_DIR', 'HOME'],
 				allowAllRead: true,
-				allowAllFfi: true
+				allowAllFfi: true,
+				allowAllWrite: true
 			},
 			{}
 		);
+		command.stderr.on('data', (data) => {
+			console.warn(data);
+		});
 		apiStore.set({
 			rpcChannel,
 			process,

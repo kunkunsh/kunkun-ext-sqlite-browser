@@ -23,6 +23,7 @@ export class SQLiteBrowser {
 			throw new Error('Database is already initialized');
 		}
 		this.db = new Database(dbPath);
+		console.error('db initialized', this.db);
 	}
 
 	/**
