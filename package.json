@@ -3,7 +3,7 @@
 	"name": "kunkun-ext-sqlite-browser",
 	"license": "MIT",
 	"repository": "https://github.com/kunkunsh/kunkun-ext-sqlite-browser",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"kunkun": {
 		"name": "SQLite Browser",
 		"shortDescription": "SQLite Browser",
@@ -13,7 +13,9 @@
 			"type": "iconify",
 			"value": "devicon:sqlite"
 		},
-		"demoImages": [],
+		"demoImages": [
+			"https://i.imgur.com/lTAKenC.png"
+		],
 		"permissions": [
 			"event:drag-drop",
 			{
